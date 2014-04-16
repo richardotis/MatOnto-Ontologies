@@ -21,9 +21,63 @@
 
 #################################################################
 #
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://matonto.org/ontologies/matonto#commonSymbol
+
+mat:commonSymbol rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+
+<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://ontology.dumontierlab.com/derivesFrom
+
+dl:derivesFrom rdf:type owl:ObjectProperty .
+
+
+
+###  http://ontology.dumontierlab.com/hasUnit
+
+dl:hasUnit rdf:type owl:ObjectProperty .
+
+
+
+
+
+#################################################################
+#
 #    Classes
 #
 #################################################################
+
+
+###  http://matonto.org/ontologies/matonto#ExtensiveProperty
+
+mat:ExtensiveProperty rdf:type owl:Class .
+
+
+
+###  http://matonto.org/ontologies/matonto#IntensiveProperty
+
+mat:IntensiveProperty rdf:type owl:Class .
+
 
 
 ###  http://matonto.org/ontologies/thermodynamics#ClosedThermodynamicSystem
@@ -80,17 +134,18 @@
                  
                  rdfs:label "Gibbs free energy" ;
                  
-                 rdfs:subClassOf dl:MolarEnergy ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty dl:hasUnit ;
-                                   owl:allValuesFrom dl:MolarEnergyUnit
-                                 ] ,
+                 rdfs:subClassOf dl:Energy ,
+                                 dl:MolarEnergy ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty dl:hasUnit ;
                                    owl:someValuesFrom dl:MolarEnergyUnit
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty dl:hasUnit ;
+                                   owl:allValuesFrom dl:MolarEnergyUnit
                                  ] ;
                  
-                 rdfs:comment "a measure of the process-initiating work obtainable from a thermodynamic system at a constant temperature and pressure." .
+                 rdfs:comment "a measure of the process-initiating work obtainable from a thermodynamic system at a constant temperature and pressure" .
 
 
 
@@ -134,7 +189,7 @@
                                        owl:allValuesFrom dl:EnergyUnit
                                      ] ;
                      
-                     rdfs:comment "the workobtainable from a closed thermodynamic system at a constant temperature" .
+                     rdfs:comment "the work obtainable from a closed thermodynamic system at a constant temperature and volume" .
 
 
 
@@ -205,6 +260,72 @@
                      rdfs:subClassOf <http://www.ifomis.org/bfo/1.0/snap#ThreeDimensionalRegion> ;
                      
                      rdfs:comment "a macroscopic region defined by boundaries that determine processes which are allowed to affect the interior of the region" .
+
+
+
+###  http://matonto.org/ontologies/thermodynamics#entropy
+
+:entropy rdf:type owl:Class ;
+         
+         rdfs:label "entropy" ;
+         
+         rdfs:subClassOf dl:MeasuredProperty ;
+         
+         rdfs:comment "A measure of the lack of information about the microscopic configuration of a thermodynamic system" .
+
+
+
+###  http://ontology.dumontierlab.com/Energy
+
+dl:Energy rdf:type owl:Class .
+
+
+
+###  http://ontology.dumontierlab.com/EnergyUnit
+
+dl:EnergyUnit rdf:type owl:Class .
+
+
+
+###  http://ontology.dumontierlab.com/EntropyUnit
+
+dl:EntropyUnit rdf:type owl:Class .
+
+
+
+###  http://ontology.dumontierlab.com/MeasuredProperty
+
+dl:MeasuredProperty rdf:type owl:Class .
+
+
+
+###  http://ontology.dumontierlab.com/MolarEnergy
+
+dl:MolarEnergy rdf:type owl:Class .
+
+
+
+###  http://ontology.dumontierlab.com/MolarEnergyUnit
+
+dl:MolarEnergyUnit rdf:type owl:Class .
+
+
+
+###  http://ontology.dumontierlab.com/SpecificEntropyUnit
+
+dl:SpecificEntropyUnit rdf:type owl:Class .
+
+
+
+###  http://ontology.dumontierlab.com/Unit
+
+dl:Unit rdf:type owl:Class .
+
+
+
+###  http://www.ifomis.org/bfo/1.0/snap#ThreeDimensionalRegion
+
+<http://www.ifomis.org/bfo/1.0/snap#ThreeDimensionalRegion> rdf:type owl:Class .
 
 
 
